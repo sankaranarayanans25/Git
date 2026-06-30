@@ -1,0 +1,155 @@
+DBMS-MYSQL
+
+- [ ] Ddl - data definition language 
+Create alter drop truncate
+- [ ] Dml - data manipulation language 
+Insert update delete 
+- [ ] Dql- data query language 
+Selecte view 
+- [ ] TCL -Transaction Control Language
+COMMIT ROLLBACK SAVEPOINT
+- [ ] DCL -Data Control Language
+GRANT  REVOKE
+—————————————————————
+
+Ddl - data definition language 
+(Create alter drop truncate)
+
+Create :
+Create table tablename (
+Name varchar(100),
+Age int,
+)
+
+Use: 
+use tablename 
+To use that table 
+
+Alter :
+Add column:
+Alter table tablename add column dept varchar(100)
+Change column name:
+Alter table tablename RENAME COLUMN old TO new 
+//Change column data type:
+//Alter table tablename ALTER COLUMN Age varchar(50)
+
+Drop: 
+Drop table tablename
+to delete table 
+
+Delete/truncate :
+Truncate table tablename/ Delete table tablename
+to delete all value on table 
+—————————————————————
+
+Dml - data manipulation language 
+(Insert update delete)
+
+Insert: 
+Insert into tablename values(“sankar”,21,”cse”)
+
+Update:
+Update tablename set age=25
+to change all the age 25
+
+Update tablename set age = 25 where name=“dk”
+to change one value 
+
+Update tablename set dept=“computer” where dept=“cse”
+to change the dept name only cse
+
+Delete:
+Delete from tablename 
+to delete all value on table 
+
+Delete from tablename where age = 25
+to delete values of a row 
+—————————————————————
+
+Dql- data query language 
+(Selecte view )
+
+Select: 
+Select * from tablename
+To select whole table and view 
+
+View:
+Create view view_name as select column_name1, column_name1 from tablename
+Select * from view_name
+To view select columns by view name
+
+Drop view view_name
+To delect view
+—————————————————————
+
+Func
+
+Sum:
+Select sum(column_name) from tablename
+To calc total of column 
+Select sum(column_name ) as newname from tablename 
+To new name for the total 
+
+Max: to calc  highest value on the column
+Min: to calc lowest value on the column
+Avg: to calc average value on the column
+Count: to calc how many value on the column
+—————————————————————
+
+OrderBy:
+Select * from tablename order by column_name desc
+To order the list by descending order
+
+Select * from tablename order by column_name asc
+To order the list by ascending order
+
+Limit:
+Select * from tablename limit 3
+To sort list top 3
+
+Offset:
+SELECT  column_name  FROM tablename  ORDER BY column_name DESC LIMIT 1 OFFSET 2
+To select third highest value in the column (offset skip the top numb of value entered)
+
+DISTINCT:
+SELECT DISTINCT column_name  FROM tablename  ORDER BY column_name DESC LIMIT 1 OFFSET 2
+To remove duplicates (distinct)
+
+Group by:
+Select avg(column_name), dept from tablename group by dept
+To calc the avg of each and every dept on the table (group by wants to use any func otherwise it shows error)
+
+Having clause:
+Select avg(column_name), dept from tablename group by dept having avg(column_name)<1000
+To filter the avg value that group by on the table 
+—————————————————————
+
+Primary key: 
+Alter table tablename add constraint pk_name primary key (id )
+To no duplicate and no null values , but each table contains only one primary key 
+Add constraint (rule adding ), pk_name (name for primary key) , primary key (that constraint ), id (column name)
+
+Create table tablename { id int primary key } 
+While creating a table set primary key 
+
+Create table tablename { id int primary key auto_increment} 
+While adding data this column will automatically fill itself
+—————————————————————
+
+Foreign key:
+Create table sectablename(
+	newid int,
+	foreign key (newid) references tablename(id)
+);
+To create a foreign key(foreign key must be PRIMARY or UNIQUE constraint and here it can be duplicates and null also, so use not null while creating for avoid null values)
+
+Alter table sectablename Drop foreign key (fk_name) ;
+To delete foreign key
+
+Alter table sectablename add constraint fk_name foreign  key (newid ) references tablename(id)
+To convert foreign key
+—————————————————————
+
+Join:
+
+￼
